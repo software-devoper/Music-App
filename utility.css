@@ -1,0 +1,56 @@
+
+::-webkit-scrollbar {
+    width: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #333; 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555; 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777; 
+}
+
+.slider {
+    -webkit-appearance: none; 
+    height: 8px;
+    background: gray; 
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #0f6fed; 
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff; 
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #004aad;
+  }
+  
+  .slider::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #004aad;
+  }
+  
+

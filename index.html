@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="spotify.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- left container -->
+    <div disabled class="container">
+        <div class="leftContainer">
+            <div class="Home">
+                <div class="logoContainer">
+                    <img class="logo" src="logo.svg" alt="">
+                    <span class="spotify">Spotify</span>
+                </div>
+                <div class="homeLogo">
+                    <i class="fa-solid homeIcon fa-house"></i>
+                    <span class="home">Home</span>
+                </div>
+                <div class="searchLogo">
+                    <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+                    <span class="search">Search</span>
+                </div>
+            </div>
+            <div class="LibraryContainer">
+                <div class="libraryLogo">
+                    <div class="libraryLogoandcontent">
+                        <img class="libLogo" src="librarylogo.svg" alt="">
+                        <span class="YourLibrary">Your Library</span>
+                    </div>
+                    <div class="plus">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="songList">
+                </div>
+            </div>
+        </div>
+        <!-- rightContainer -->
+        <div class="rightContainer">
+            <nav>
+                <div class="arrow">
+                    <i class="fa-solid fa-less-than leftArrow"></i>
+                    <i class="fa-solid fa-greater-than rightArrow"></i>
+                </div>
+                <button id="folderPicker">Select Music Folder</button>
+                <div class="buttons">
+                    <button class="signUp">Sign up</button>
+                    <button class="login">Log in</button>
+                </div>
+                <i class="fa-solid fa-bars fa-2x openmenu" id="open"></i>
+            </nav>
+            <div class="spotifyPlayList">
+                <h2 id="Playlist">SpotifyMusic</h2>
+                <div class="spotifyLogo">
+                    <img id="small" src="logo.png" alt="">
+                </div>
+                <div class="playCards">
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/radio/artist/4YRxDV8wJFPHPTeXepOstw/en"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img aria-hidden="false" class="card1" draggable="false" loading="lazy"
+                                src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/radio/artist/0GF4shudTAFv8ak9eWdd4Y/en"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Mohammed Rafi, Asha Bhosle, Mukesh and more
+                        </span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img aria-hidden="false" class="card1" draggable="false" loading="lazy"
+                                src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/radio/artist/2FKWNmZWDBZR4dE5KX4plR/en"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">The finest set of Malayalam music from the past 10 years.
+                            Cover : Aavesham</span>
+                    </div>
+
+
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002f4caf116bd60e783f94363c3"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">Catch all the Bhojpuri top hits. Cover: Pawan Singh & Subhashree
+                            Kar</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002639007e7b5d0e835871563d8"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">Finest collection of Tamil Music from the past 10 years
+                            Cover : Vettaiyan</s pan>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f000000029f55404ca5f2c77f24900db3"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002dda381d6e4b5ebc246bada8a"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f000000025353503b63fb52d313b7423c"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f0000000286e871fc5a29aaf8e3533146"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002dda381d6e4b5ebc246bada8a"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002a79aa912d12b40e0f1c88f39"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002a79aa912d12b40e0f1c88f39"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002d34b7a5a36d2d5b7b7897eec"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f000000021696b4b11d7a75718f9e4f7d"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f0000000282bed4ac067101a52ed55b1a"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                    <div class="songlist">
+                        <div class="img1">
+                            <img class="card1" aria-hidden="false" draggable="false" loading="lazy"
+                                src="https://i.scdn.co/image/ab67706f00000002667a8146f0a7b488114b1cb1"
+                                data-testid="card-image" alt=""
+                                class="mMx2LUixlnN_Fu45JpFB yMQTWVwLJ5bV8VGiaqU3 yOKoknIYYzAE90pe7_SE Yn2Ei5QZn19gria6LjZj">
+                            <div class="hoverPlay">
+                                <div class="play"><i class="fa-solid fa-play playCircle"></i></div>
+                            </div>
+                        </div>
+                        <br>
+                        <span class="songlist1">With Sachin-Jigar, Atif Aslam, Mithoon and more</span>
+                    </div>
+                </div>
+                <!-- //menuContainer -->
+                <div class="menuContainer hide">
+                    <div class="menuLogo">
+                        <div class="menuContent">
+                            <i class="fa-solid fa-square-xmark fa-2x closemenu"></i>
+                            <span class="menuLibrary">Songs List</span>
+                        </div>
+                        <div class="plus">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="songList menuList">
+                    </div>
+                </div>
+                <div class="playBar">
+                    <marquee behavior="" direction="">
+                    <div class="SongList"></div>
+                </marquee>
+                    <div class="progressBar">
+                        <input type="range" value="0" class="progress slider">
+                    </div>
+                    <i class="fa-solid fa-volume-low " id="decrease"></i>
+                    <input type="range" min='0' max="100" id="increase">
+                    <i class="fa-solid fa-2x fa-backward-step" id="previous"></i>
+                    <i class="fa-regular fa-2x fa-circle-play playIcon"></i>
+                    <i class="fa-solid fa-2x fa-forward-step" id="next"></i>
+                    <i class="fa-solid fa-volume-high Mute"></i>
+                    <div class="songcurrentTime"></div>
+                    <div class="songduration"></div>
+                    <img src="playing.gif" alt="" class="gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
