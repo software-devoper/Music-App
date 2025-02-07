@@ -61,7 +61,7 @@
             <div class="spotifyPlayList">
                 <h2 id="Playlist">SpotifyMusic</h2>
                 <div class="spotifyLogo">
-                    <img id="small" src="music.webp" alt="">
+                    <img id="small" src="play.jpg" alt="">
                 </div>
                 <div class="playCards">
                     <div class="songlist">
@@ -302,16 +302,18 @@
                     <div class="SongList"></div>
                 </marquee>
                     <div class="progressBar">
+                        <div class="songcurrentTime"></div>
                         <input type="range" value="0" class="progress slider">
+                        <div class="songduration"></div>
                     </div>
                     <i class="fa-solid fa-volume-low " id="decrease"></i>
                     <input type="range" min='0' max="100" id="increase">
-                    <i class="fa-solid fa-2x fa-backward-step" id="previous"></i>
+                    <img src="right.webp"  id="previous">
+                    <!-- <i class="fa-solid fa-2x fa-backward-step" id="previous"></i> -->
                     <i class="fa-regular fa-2x fa-circle-play playIcon"></i>
-                    <i class="fa-solid fa-2x fa-forward-step" id="next"></i>
+                    <img src="right.webp"  id="next">
+                    <!-- <i class="fa-solid fa-2x fa-forward-step" id="next"></i> -->
                     <i class="fa-solid fa-volume-high Mute"></i>
-                    <div class="songcurrentTime"></div>
-                    <div class="songduration"></div>
                     <img src="playing.gif" alt="" class="gif">
                 </div>
             </div>
