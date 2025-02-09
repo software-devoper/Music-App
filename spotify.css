@@ -352,7 +352,7 @@ nav {
 }
 
 .songList {
-    height: 60vh;
+    height: 71vh;
     overflow-y: scroll;
 
 }
@@ -444,6 +444,7 @@ input[type="range"]::-webkit-slider-thumb {
     margin-left: 20px;
     cursor: pointer;
 }
+
 #small {
     display: none;
 }
@@ -457,13 +458,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .menuLibrary {
-    margin-left: 25px;
     font-size: 26px;
 }
 
 #open {
     display: none;
 }
+
 .SongList {
     width: 94%;
     display: flex;
@@ -472,6 +473,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 21%;
     font-size: 1.5vw;
 }
+
 @media only screen and (max-width : 500px) {
     * {
         margin: 0;
@@ -481,27 +483,31 @@ input[type="range"]::-webkit-slider-thumb {
     #open {
         display: block;
     }
-    html{
-        background-color: #0f2133;;
+
+    html {
+        background-color: #0f2133;
     }
+
     .menuContainer {
-        display: block;
-        width: 58%;
-        margin-left: 11%;
+            display: block;
+            width: 93.5%;
+            margin-left: -24%;
     }
+
     #previous {
         size: 10px;
         width: 10%;
         filter: invert(1);
         cursor: pointer;
     }
-    
+
     #next {
         cursor: pointer;
         width: 10%;
         transform: rotate(180deg);
         filter: invert(1);
     }
+
     .leftContainer {
         display: none;
     }
@@ -510,13 +516,14 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
         height: 100%;
     }
-        .playBar {
-            width: 100%;
-            left: 0px;
-            position: absolute;
-            bottom: -10vw;
-            background: linear-gradient(45deg, #13134b, #087878, #050564);
-            height: 17%;
+
+    .playBar {
+        width: 100%;
+        left: 0px;
+        position: absolute;
+        bottom: -10vw;
+        background: linear-gradient(45deg, #13134b, #087878, #050564);
+        height: 17%;
     }
 
     .playCards {
@@ -553,22 +560,25 @@ input[type="range"]::-webkit-slider-thumb {
         color: transparent;
         animation: change 4s linear infinite;
     }
-   
-    
-@keyframes change {
-    0% {
-        background-position: 0% 50%;
-        text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+
+
+    @keyframes change {
+        0% {
+            background-position: 0% 50%;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        50% {
+            background-position: 100% 50%;
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        100% {
+            background-position: 0% 50%;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
     }
-    50% {
-        background-position: 100% 50%;
-        text-shadow: 0px 0px 20px rgba(0,0,0,0.5);
-    }
-    100% {
-        background-position: 0% 50%;
-        text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    }
-}
+
     .spotifyPlayList {
         background-color: rgb(8 8 49);
         margin-top: 2px;
@@ -604,16 +614,16 @@ input[type="range"]::-webkit-slider-thumb {
         margin-left: 20px;
         margin-right: 20px;
     }
-    .SongList{
+
+    .SongList {
         width: 94%;
-        display: flex
-    ;
+        display: flex;
         justify-content: center;
         align-items: center;
         height: 21%;
         font-size: 5vw;
     }
-    
+
 }
 
 #menuToggle {
@@ -622,9 +632,10 @@ input[type="range"]::-webkit-slider-thumb {
 
 .menuContainer {
     position: absolute;
-    top: -8%;
+    top: -8.5%;
     border: 2px solid red;
     left: 169px;
+    height: 90%;
 }
 
 .container {
@@ -634,7 +645,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .hide {
     left: 678px;
-    transition: left 2s linear;
+    transition: left 0.3s linear;
 }
 
 .unhide {
@@ -648,7 +659,7 @@ input[type="range"]::-webkit-slider-thumb {
     justify-content: space-between;
     align-items: center;
     height: 30px;
-    background-color: gray;
+    background-color: #0e6348;
     gap: 3px;
     border-radius: 20px;
     margin: 5px;
@@ -657,15 +668,18 @@ input[type="range"]::-webkit-slider-thumb {
     padding-right: 10px;
     cursor: pointer;
 }
-.arrow{
+
+.arrow {
     cursor: pointer;
 }
-nav{
+
+nav {
     position: relative;
 }
-#folderPicker{
+
+#folderPicker {
     position: absolute;
-    left:15%;
+    left: 15%;
     height: 90%;
     background-color: gray;
     outline: none;
@@ -673,11 +687,17 @@ nav{
     font-size: 100%;
     display: none;
 }
-#increase{
+
+#increase {
     display: none;
 }
-#decrease{
+
+#decrease {
     font-size: 25px;
     cursor: pointer;
     margin-right: 20px;
+}
+.menuLibraryContainer{
+    width: 90%;
+    background-color: red;
 }
