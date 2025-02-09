@@ -9,6 +9,7 @@ let songs = [];
 let masterPlay = document.querySelector(".playIcon");
 let change = document.querySelector('#decrease');
 
+let NAME = document.querySelector('#Playlist');
 // Desktop: Folder Selection
 folderPicker.addEventListener("click", async () => {
   if (!window.showDirectoryPicker) {
@@ -35,25 +36,36 @@ async function loadSongsFromFolder(dirHandle) {
   songs = [];
   songList.innerHTML = "";
   for await (const entry of dirHandle.values()) {
-    if (entry.kind === "file" && (entry.name.toLowerCase().endsWith(".mp3") || entry.name.toLowerCase().endsWith(".m4a"))) {
+    if (entry.kind === "file" && (entry.name.toLowerCase().endsWith(".mp3") ||
+      entry.name.toLowerCase().endsWith(".m4a") ||
+      entry.name.toLowerCase().endsWith(".wav") ||
+      entry.name.toLowerCase().endsWith(".flac"))) {
       let index = songs.length;
       songs.push(entry);
       let listItem = document.createElement("li");
       let songDetail = document.createElement("div");
       let songDetail1 = document.createElement('div');
+      let image = document.createElement("img");
+      let image1 = document.createElement('img');
       let nameList = document.createElement("span");
       let nameList1 = document.createElement("span");
+      image.className = 'im';
+      image1.className = 'im';
       nameList.className = 'songName';
       nameList1.className = 'songName';
       songDetail.className = 'songDetail';
       songDetail1.className = 'songDetail1';
       nameList.textContent = entry.name;
       nameList1.textContent = entry.name;
+      image.src = 'music.webp';
+      image1.src = 'music.webp';
       // songList.appendChild(listItem);
       songList.prepend(songDetail);
       menuList.prepend(songDetail1);
       songDetail.prepend(nameList);
       songDetail1.prepend(nameList1);
+      songDetail.prepend(image);
+      songDetail1.prepend(image1);
       nameList.onclick = () => playSong(index);
       nameList1.onclick = () => playSong(index);
     }
@@ -224,17 +236,17 @@ inc.addEventListener('change', () => {
   audioPlayer.volume = inc.value / 100;
   let val = inc.value / 100;
   console.log(val);
-  if(val==0){
+  if (val == 0) {
     change.classList.remove('fa-volume-low');
     change.classList.remove('fa-volume-high')
     change.classList.add('fa-volume-xmark');
   }
-  else if(val>0&&val<=0.50){
+  else if (val > 0 && val <= 0.50) {
     change.classList.remove('fa-volume-high')
     change.classList.remove('fa-volume-xmark');
     change.classList.add('fa-volume-low');
   }
-  else if(val>0.51&&val<=1){
+  else if (val > 0.51 && val <= 1) {
     change.classList.remove('fa-volume-off');
     change.classList.remove('fa-volume-xmark');
     change.classList.add('fa-volume-high')
