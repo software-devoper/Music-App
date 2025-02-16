@@ -123,9 +123,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2px;
-    margin-bottom: 5px;
+    margin-top: -2px;
     color: gray;
+    background: rgb(20, 20, 51);
+    height: 75px;
+    padding: 0px;
+    width: 100%;
 }
 
 nav {
@@ -284,7 +287,7 @@ nav {
 
 .playBar {
     position: fixed;
-    height: 89px;
+    height: 117px;
     width: 99.50%;
     background-color: #3c3a3a;
     left: 10px;
@@ -352,7 +355,7 @@ nav {
 }
 
 .songList {
-    height: 71vh;
+    height: 84.5%;
     overflow-y: scroll;
 
 }
@@ -439,7 +442,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .Mute {
-    color: white;
+    color:white;
     font-size: 25px;
     margin-left: 20px;
     cursor: pointer;
@@ -474,6 +477,37 @@ input[type="range"]::-webkit-slider-thumb {
     font-size: 1.5vw;
 }
 
+.icon {
+    display: none;
+}
+
+.playIcon {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, purple, blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+}
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#decrease {
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+    color:white;
+}
+.note{
+    display: none;
+}
 @media only screen and (max-width : 500px) {
     * {
         margin: 0;
@@ -482,22 +516,31 @@ input[type="range"]::-webkit-slider-thumb {
 
     #open {
         display: block;
+        color: #4f4b4b
     }
 
     html {
         background-color: #0f2133;
     }
 
+    .note {
+        display: block;
+        color: #aaa0a0;
+        font-weight: 500;
+    }
+
     .menuContainer {
-            display: block;
-            width: 93.5%;
-            margin-left: -24%;
+        display: block;
+        width: 100%;
+        margin-left: -24%;
+        padding: 0;
+
     }
 
     #previous {
         size: 10px;
         width: 10%;
-        filter: invert(1);
+        filter: contrast(0.5);
         cursor: pointer;
     }
 
@@ -505,7 +548,7 @@ input[type="range"]::-webkit-slider-thumb {
         cursor: pointer;
         width: 10%;
         transform: rotate(180deg);
-        filter: invert(1);
+        filter: contrast(0.5);
     }
 
     .leftContainer {
@@ -521,9 +564,12 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
         left: 0px;
         position: absolute;
-        bottom: -10vw;
-        background: linear-gradient(45deg, #13134b, #087878, #050564);
-        height: 17%;
+        bottom: -3vw;
+        /* background: linear-gradient(45deg, #13134b, #087878, #050564); */
+        height: 20%;
+        border-radius: 19px;
+        background: #19192b;
+        padding-bottom: 15vw;
     }
 
     .playCards {
@@ -536,16 +582,11 @@ input[type="range"]::-webkit-slider-thumb {
 
     nav {
         width: 99%;
-        height: 4vh;
-        background: linear-gradient(45deg, #13134b, #087878, #050564);
+        height: 6vh;
+        /* background: linear-gradient(45deg, #13134b, #087878, #050564); */
+        background: #16162e
     }
 
-    #small {
-        display: block;
-        height: 90vw;
-        border-radius: 15px;
-        width: 90vw;
-    }
 
     #Playlist {
         /* background-color: red; */
@@ -559,6 +600,7 @@ input[type="range"]::-webkit-slider-thumb {
         background-clip: text;
         color: transparent;
         animation: change 4s linear infinite;
+        display: none;
     }
 
 
@@ -580,7 +622,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .spotifyPlayList {
-        background-color: rgb(8 8 49);
+        background-color: rgb(2 2 32);
         margin-top: 2px;
         position: fixed;
         height: 85vh;
@@ -590,12 +632,12 @@ input[type="range"]::-webkit-slider-thumb {
     .spotifyLogo {
         width: 100%;
         /* background-color: cyan; */
-        height: 87vw;
+        height: 70vw;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 148px;
-        margin-top: 10vw;
+        margin-top: 30vw;
     }
 
     .slider {
@@ -604,17 +646,32 @@ input[type="range"]::-webkit-slider-thumb {
 
     .songduration {
         left: 88%;
+        color: #96968f;
     }
 
     .songcurrentTime {
         right: 88%;
+        color: #96968f;
     }
 
     .playIcon {
         margin-left: 20px;
         margin-right: 20px;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, purple, blue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 30px;
     }
 
+    .playIcon i {
+        margin-left: 8%;
+    }
+   
     .SongList {
         width: 94%;
         display: flex;
@@ -624,6 +681,56 @@ input[type="range"]::-webkit-slider-thumb {
         font-size: 5vw;
     }
 
+    .arrow {
+        cursor: pointer;
+        color: #4f4b4b
+    }
+
+    #small {
+        display: block;
+        height: 99%;
+        border-radius: 50%;
+        width: 99%;
+    }
+
+    .circular-image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        height: 80vw;
+        border-radius: 50%;
+        padding: 10px;
+        background: linear-gradient(to right, blue, cyan);
+        box-shadow: 0px 0px 50px cyan;
+        animation: increase 4s linear infinite;
+    }
+
+    .icon {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 14px;
+        color: #405956;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    #decrease{
+        color: #464343;
+    }
+   .Mute{
+    color: #464343;
+   }
 }
 
 #menuToggle {
@@ -632,10 +739,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 .menuContainer {
     position: absolute;
-    top: -8.5%;
-    border: 2px solid red;
+    top: -13%;
     left: 169px;
-    height: 90%;
+    height: 87%;
 }
 
 .container {
@@ -655,22 +761,28 @@ input[type="range"]::-webkit-slider-thumb {
 
 .songDetail1 {
     display: flex;
-    width: 90%;
     justify-content: space-between;
     align-items: center;
-    height: 30px;
-    background-color: #0e6348;
+    height: 34px;
+    background-color: #928DAb;
     gap: 3px;
-    border-radius: 20px;
-    margin: 5px;
-    padding: 5px;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 6px;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    color: #1f1c2c;
 }
 
-.arrow {
-    cursor: pointer;
+.songDetail1:hover {
+    transform: scaleX(1.1);
+    background-color: #FF5722;
+}
+
+.songDetail:hover {
+    transform: scaleX(1.1);
+    background-color: #FF5722;
 }
 
 nav {
@@ -692,12 +804,74 @@ nav {
     display: none;
 }
 
-#decrease {
-    font-size: 25px;
-    cursor: pointer;
-    margin-right: 20px;
-}
-.menuLibraryContainer{
+
+.menuLibraryContainer {
     width: 90%;
     background-color: red;
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+@keyframes increase {
+    0% {
+        box-shadow: 0px 0px 50px cyan;
+    }
+
+    25% {
+        box-shadow: 0px 0px 50px blue;
+    }
+
+    50% {
+        box-shadow: 0px 0px 50px yellow;
+    }
+
+    75% {
+        box-shadow: 0px 0px 50px red;
+    }
+}
+
+.closemenu {
+    margin-left: 5px;
+}
+
+.plus {
+    margin-right: 10px;
+}
+
+.menuLogo {
+    padding-top: 20px;
+    height: 60px;
+}
+
+.menuList {
+    height: 84.5%;
+    overflow-y: scroll;
+    background-color: #1f1c2c;
+}
+
+.LibraryContainer {
+    height: 74vh;
+}
+
+.songList {
+    height: 90%;
+}
+
+.menuList::-webkit-scrollbar {
+    display: none;
+}
+
+.zoom {
+    transform: scale(0.9);
+}
+
+.minus {
+    transform: scale(1.1);
+    transition: transform 0.5s linear;
+}
+
+.out {
+    transform: scale(0.9);
 }
