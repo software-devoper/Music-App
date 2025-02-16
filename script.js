@@ -1,6 +1,9 @@
 let arr = [];
+let arrow = document.querySelector('.arrow')
 let currentSongIndex;
 let audioPlayer = new Audio();
+let clickAudio=new Audio();
+let PLAY=document.querySelector('#play')
 const folderPicker = document.getElementById("folderPicker");
 let songList = document.querySelector(".songList");
 let menuList = document.querySelector('.menuList');
@@ -8,10 +11,25 @@ let SongNameApear = document.querySelector('.SongList');
 let songs = [];
 let masterPlay = document.querySelector(".playIcon");
 let change = document.querySelector('#decrease');
-
+let zoom=document.querySelector('.circular-image-wrapper');
+let heart=document.querySelector('#heart');
 let NAME = document.querySelector('#Playlist');
+let icon=1;
+heart.addEventListener('click',()=>{
+  if(icon==1){
+    icon=2;
+    heart.style.color='red';
+  }
+  else{
+    icon=1;
+    heart.style.color='#405956';
+  }
+  console.log(icon);
+})
 // Desktop: Folder Selection
-folderPicker.addEventListener("click", async () => {
+arrow.addEventListener("click", async () => {
+  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.play();
   if (!window.showDirectoryPicker) {
     alert("Your browser does not support folder access.");
     return;
@@ -23,15 +41,15 @@ folderPicker.addEventListener("click", async () => {
     console.error("Error accessing folder: ", error);
   }
 });
-let arrow = document.querySelector('.arrow')
+// let arrow = document.querySelector('.arrow')
 
-arrow.addEventListener('click', () => {
-  folderPicker.style.display = 'block';
-})
+// arrow.addEventListener('click', () => {
+//   folderPicker.style.display = 'block';
+// })
 
-folderPicker.addEventListener('click', () => {
-  folderPicker.style.display = 'none';
-})
+// folderPicker.addEventListener('click', () => {
+//   folderPicker.style.display = 'none';
+// })
 async function loadSongsFromFolder(dirHandle) {
   songs = [];
   songList.innerHTML = "";
@@ -87,8 +105,10 @@ async function playSong(index, item) {
       audioPlayer.src = URL.createObjectURL(file);
     }
     audioPlayer.play();
-    masterPlay.classList.add("fa-circle-pause");
-    masterPlay.classList.remove("fa-circle-play");
+    zoom.classList.remove('out');
+    PLAY.classList.add("fa-pause");
+     PLAY.classList.remove("fa-play");
+     PLAY.style.margin='0';
     console.log(currentSongIndex);
     SongNameApear.innerText = songs[currentSongIndex].name;
   }
@@ -96,26 +116,31 @@ async function playSong(index, item) {
 
 let master = () => {
   masterPlay.addEventListener("click", (e) => {
+    clickAudio.src='ui-click-43196.mp3';
+    clickAudio.play();
     if (!currentSongIndex && currentSongIndex != 0) {
       console.log(currentSongIndex);
       return alert("Click on < >");
     }
     if (audioPlayer.paused || audioPlayer.currentTime <= 0) {
       audioPlayer.play();
-      masterPlay.classList.add("fa-circle-pause");
-      masterPlay.classList.remove("fa-circle-play");
+      PLAY.classList.add("fa-pause");
+      PLAY.classList.remove("fa-play");
+      PLAY.style.margin='0';
       // gif.style.width = "70px"
       // gif.style.height = "35px";
       console.log(currentSongIndex);
       // smallimg.src = songs[currentSongIndex].imagePath;
+      zoom.classList.remove('out');
     }
     else {
       audioPlayer.pause();
-      masterPlay.classList.add("fa-circle-play");
-      masterPlay.classList.remove("fa-circle-pause");
-
+      PLAY.classList.add("fa-play");
+      PLAY.classList.remove("fa-pause");
+      PLAY.style.marginLeft='8%';
       // gif.style.width = "0px";
       // gif.style.height = "0px";
+      zoom.classList.add('out');
     }
 
   });
@@ -146,6 +171,14 @@ audioPlayer.addEventListener('timeupdate', () => {
   }
 
 });
+const ZoomOut=()=>{
+  zoom.classList.add('zoom');
+  zoom.classList.remove('minus');
+  setInterval(()=>{
+    zoom.classList.remove('.minus');
+    zoom.classList.add('minus');
+  },100);
+}
 Progress.addEventListener("click", () => {
   Progress.style.cursor = 'pointer';
   audioPlayer.currentTime = Progress.value * audioPlayer.duration / 100;
@@ -158,6 +191,9 @@ Progress.addEventListener("touchend", () => {
 
 let previusButton = document.querySelector("#previous");
 previusButton.addEventListener("click", () => {
+  ZoomOut();
+  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.play();
   console.log('hi');
   if (currentSongIndex < 2) {
     currentSongIndex = songs.length - 1;
@@ -171,6 +207,9 @@ previusButton.addEventListener("click", () => {
 
 let nextButton = document.querySelector("#next");
 nextButton.addEventListener("click", () => {
+  ZoomOut();
+  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.play();
   console.log('hi');
   if (currentSongIndex >= songs.length - 1) {
     currentSongIndex = 0;
@@ -189,6 +228,8 @@ let menuContainer = document.querySelector('.menuContainer');
 let openmenu = document.querySelector('.openmenu');
 let closemenu = document.querySelector('.closemenu');
 openmenu.addEventListener('click', () => {
+  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.play();
   menuContainer.classList.add('unhide');
   menuContainer.classList.remove('hide');
 });
@@ -250,5 +291,29 @@ inc.addEventListener('change', () => {
     change.classList.remove('fa-volume-off');
     change.classList.remove('fa-volume-xmark');
     change.classList.add('fa-volume-high')
+  }
+});
+
+let pic=document.querySelector("#small");
+
+
+pic.addEventListener("click", async () => {
+  try {
+    const [fileHandle] = await window.showOpenFilePicker({
+      types: [
+        {
+          description: "Image Files",
+          accept: {
+            "image/*": [".png", ".gif", ".jpeg", ".jpg", ".webp"]
+          }
+        }
+      ],
+      multiple: false
+    });
+    const file = await fileHandle.getFile();
+    const url = URL.createObjectURL(file);
+    pic.src = url;
+  } catch (error) {
+    console.error("Error selecting file: ", error);
   }
 });
