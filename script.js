@@ -1,9 +1,9 @@
 let arr = [];
-let arrow = document.querySelector('.arrow')
+let arrow = document.querySelector('.arrow');
 let currentSongIndex;
 let audioPlayer = new Audio();
-let clickAudio=new Audio();
-let PLAY=document.querySelector('#play')
+let clickAudio = new Audio();
+let PLAY = document.querySelector('#play');
 const folderPicker = document.getElementById("folderPicker");
 let songList = document.querySelector(".songList");
 let menuList = document.querySelector('.menuList');
@@ -11,24 +11,35 @@ let SongNameApear = document.querySelector('.SongList');
 let songs = [];
 let masterPlay = document.querySelector(".playIcon");
 let change = document.querySelector('#decrease');
-let zoom=document.querySelector('.circular-image-wrapper');
-let heart=document.querySelector('#heart');
+let zoom = document.querySelector('.circular-image-wrapper');
+let heart = document.querySelector('#heart');
 let NAME = document.querySelector('#Playlist');
-let icon=1;
-heart.addEventListener('click',()=>{
-  if(icon==1){
-    icon=2;
-    heart.style.color='red';
-  }
-  else{
-    icon=1;
-    heart.style.color='#405956';
+let search = document.querySelector('#search');
+let plus = document.querySelector('#add');
+let songInforMation = document.querySelector('.menuContainer');
+let close=document.querySelector('#close');
+let icon = 1;
+
+// Heart icon click event
+heart.addEventListener('click', () => {
+  if (icon == 1) {
+    icon = 2;
+    heart.classList.add('fa-solid');
+    heart.classList.remove('fa-regular');
+    heart.style.color = 'red';
+    alert('Thank you for liking it');
+  } else {
+    icon = 1;
+    heart.classList.remove('fa-solid');
+    heart.classList.add('fa-regular');
+    heart.style.color = '#405956';
   }
   console.log(icon);
-})
+});
+
 // Desktop: Folder Selection
 arrow.addEventListener("click", async () => {
-  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.src = 'ui-click-43196.mp3';
   clickAudio.play();
   if (!window.showDirectoryPicker) {
     alert("Your browser does not support folder access.");
@@ -41,15 +52,33 @@ arrow.addEventListener("click", async () => {
     console.error("Error accessing folder: ", error);
   }
 });
-// let arrow = document.querySelector('.arrow')
 
-// arrow.addEventListener('click', () => {
-//   folderPicker.style.display = 'block';
-// })
+// Search functionality
+search.addEventListener('click', () => {
+  search.style.display = 'none';
+  let searchbar = document.createElement('input');
+  searchbar.className = 'Find';
+  searchbar.type = 'search';
+  searchbar.placeholder = 'Search Songs';
+  plus.prepend(searchbar);
 
-// folderPicker.addEventListener('click', () => {
-//   folderPicker.style.display = 'none';
-// })
+  searchbar.addEventListener('input', () => {
+    let query = searchbar.value.toLowerCase();
+    document.querySelectorAll('.songDetail1').forEach((songDetail) => {
+      let songName = songDetail.querySelector('.songName').textContent.toLowerCase();
+      if (songName.includes(query)) {
+        songDetail.style.display = 'flex';
+      } else {
+        songDetail.style.display = 'none';
+      }
+    });
+  });
+  close.addEventListener('click',()=>{
+    searchbar.style.display='none';
+    search.style.display='block';
+  })
+});
+
 async function loadSongsFromFolder(dirHandle) {
   songs = [];
   songList.innerHTML = "";
@@ -60,7 +89,6 @@ async function loadSongsFromFolder(dirHandle) {
       entry.name.toLowerCase().endsWith(".flac"))) {
       let index = songs.length;
       songs.push(entry);
-      let listItem = document.createElement("li");
       let songDetail = document.createElement("div");
       let songDetail1 = document.createElement('div');
       let image = document.createElement("img");
@@ -71,13 +99,14 @@ async function loadSongsFromFolder(dirHandle) {
       image1.className = 'im';
       nameList.className = 'songName';
       nameList1.className = 'songName';
+      nameList1.id = 'music';
       songDetail.className = 'songDetail';
       songDetail1.className = 'songDetail1';
+
       nameList.textContent = entry.name;
       nameList1.textContent = entry.name;
       image.src = 'music.webp';
       image1.src = 'music.webp';
-      // songList.appendChild(listItem);
       songList.prepend(songDetail);
       menuList.prepend(songDetail1);
       songDetail.prepend(nameList);
@@ -91,9 +120,15 @@ async function loadSongsFromFolder(dirHandle) {
   if (songs.length > 0) {
     playSong(0);
   }
+
+  // Print all song names in the console
+  console.log("Songs fetched from folder:");
+  songs.forEach((song, index) => {
+    console.log(`${index + 1}. ${song.name}`);
+  });
 }
 
-async function playSong(index, item) {
+async function playSong(index) {
   currentSongIndex = index;
   const file = songs[index];
   console.log(file);
@@ -107,57 +142,47 @@ async function playSong(index, item) {
     audioPlayer.play();
     zoom.classList.remove('out');
     PLAY.classList.add("fa-pause");
-     PLAY.classList.remove("fa-play");
-     PLAY.style.margin='0';
+    PLAY.classList.remove("fa-play");
+    PLAY.style.margin = '0';
     console.log(currentSongIndex);
     SongNameApear.innerText = songs[currentSongIndex].name;
   }
 }
 
-let master = () => {
-  masterPlay.addEventListener("click", (e) => {
-    clickAudio.src='ui-click-43196.mp3';
-    clickAudio.play();
-    if (!currentSongIndex && currentSongIndex != 0) {
-      console.log(currentSongIndex);
-      return alert("Click on < >");
-    }
-    if (audioPlayer.paused || audioPlayer.currentTime <= 0) {
-      audioPlayer.play();
-      PLAY.classList.add("fa-pause");
-      PLAY.classList.remove("fa-play");
-      PLAY.style.margin='0';
-      // gif.style.width = "70px"
-      // gif.style.height = "35px";
-      console.log(currentSongIndex);
-      // smallimg.src = songs[currentSongIndex].imagePath;
-      zoom.classList.remove('out');
-    }
-    else {
-      audioPlayer.pause();
-      PLAY.classList.add("fa-play");
-      PLAY.classList.remove("fa-pause");
-      PLAY.style.marginLeft='8%';
-      // gif.style.width = "0px";
-      // gif.style.height = "0px";
-      zoom.classList.add('out');
-    }
+// Master play button functionality
+masterPlay.addEventListener("click", () => {
+  clickAudio.src = 'ui-click-43196.mp3';
+  clickAudio.play();
+  if (!currentSongIndex && currentSongIndex != 0) {
+    console.log(currentSongIndex);
+    return alert("Click on < >");
+  }
+  if (audioPlayer.paused || audioPlayer.currentTime <= 0) {
+    audioPlayer.play();
+    PLAY.classList.add("fa-pause");
+    PLAY.classList.remove("fa-play");
+    PLAY.style.margin = '0';
+    zoom.classList.remove('out');
+  } else {
+    audioPlayer.pause();
+    PLAY.classList.add("fa-play");
+    PLAY.classList.remove("fa-pause");
+    PLAY.style.marginLeft = '8%';
+    zoom.classList.add('out');
+  }
+});
 
-  });
-  return 'start';
-}
-console.log(master());
+// Update progress bar
 let Progress = document.querySelector(".progress");
 audioPlayer.addEventListener('timeupdate', () => {
   let progress = audioPlayer.currentTime / audioPlayer.duration * 100;
   Progress.value = progress;
-  //   console.log(progress);
   let songduration = document.querySelector(".songduration");
   let songcurrentTime = document.querySelector(".songcurrentTime");
   let songCurrent = Math.ceil(audioPlayer.currentTime);
   let songDuration = Math.ceil(audioPlayer.duration);
   let minite = Math.floor(songDuration / 60);
-  let second = songDuration % 60
+  let second = songDuration % 60;
   let cMinite = Math.floor(songCurrent / 60);
   let cSecond = songCurrent % 60;
   let lMinite = minite - cMinite;
@@ -169,16 +194,9 @@ audioPlayer.addEventListener('timeupdate', () => {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     playSong(currentSongIndex);
   }
-
 });
-const ZoomOut=()=>{
-  zoom.classList.add('zoom');
-  zoom.classList.remove('minus');
-  setInterval(()=>{
-    zoom.classList.remove('.minus');
-    zoom.classList.add('minus');
-  },100);
-}
+const ZoomOut = () => { zoom.classList.add('zoom'); zoom.classList.remove('minus'); setInterval(() => { zoom.classList.remove('.minus'); zoom.classList.add('minus'); }, 100); }
+// Progress bar click event
 Progress.addEventListener("click", () => {
   Progress.style.cursor = 'pointer';
   audioPlayer.currentTime = Progress.value * audioPlayer.duration / 100;
@@ -189,46 +207,40 @@ Progress.addEventListener("touchend", () => {
   audioPlayer.currentTime = Progress.value * audioPlayer.duration / 100;
 });
 
+// Previous button functionality
 let previusButton = document.querySelector("#previous");
 previusButton.addEventListener("click", () => {
   ZoomOut();
-  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.src = 'ui-click-43196.mp3';
   clickAudio.play();
-  console.log('hi');
   if (currentSongIndex < 2) {
     currentSongIndex = songs.length - 1;
-  }
-  else {
+  } else {
     currentSongIndex -= 1;
   }
-  console.log(currentSongIndex);
   playSong(currentSongIndex);
 });
 
+// Next button functionality
 let nextButton = document.querySelector("#next");
 nextButton.addEventListener("click", () => {
   ZoomOut();
-  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.src = 'ui-click-43196.mp3';
   clickAudio.play();
-  console.log('hi');
   if (currentSongIndex >= songs.length - 1) {
     currentSongIndex = 0;
-  }
-  else {
+  } else {
     currentSongIndex += 1;
   }
-  console.log(currentSongIndex);
   playSong(currentSongIndex);
+});
 
-})
-
-
-// menu toggle
+// Menu toggle functionality
 let menuContainer = document.querySelector('.menuContainer');
 let openmenu = document.querySelector('.openmenu');
 let closemenu = document.querySelector('.closemenu');
 openmenu.addEventListener('click', () => {
-  clickAudio.src='ui-click-43196.mp3';
+  clickAudio.src = 'ui-click-43196.mp3';
   clickAudio.play();
   menuContainer.classList.add('unhide');
   menuContainer.classList.remove('hide');
@@ -238,12 +250,15 @@ closemenu.addEventListener('click', () => {
   menuContainer.classList.remove('unhide');
 });
 
+// Play button functionality
 let playdate = document.querySelectorAll(".play");
 playdate.forEach((p) => {
   p.addEventListener('click', () => {
     alert('404 songs not found');
-  })
+  });
 });
+
+// Mute button functionality
 let Mute = document.querySelector(".Mute");
 let mute = 0;
 Mute.addEventListener("click", () => {
@@ -251,8 +266,7 @@ Mute.addEventListener("click", () => {
     mute = 0;
     Mute.classList.add("fa-volume-high");
     Mute.classList.remove("fa-volume-off");
-  }
-  else {
+  } else {
     mute = 1;
     Mute.classList.add("fa-volume-off");
     Mute.classList.remove("fa-volume-high");
@@ -260,43 +274,38 @@ Mute.addEventListener("click", () => {
   audioPlayer.muted = !audioPlayer.muted;
 });
 
+// Volume control functionality
 let inc = document.querySelector('#increase');
-let increase = 'on'
+let increase = 'on';
 change.addEventListener('click', () => {
   if (increase == 'on') {
-    increase = 'of';
+    increase = 'off';
     inc.style.display = 'block';
-  }
-  else {
+  } else {
     increase = 'on';
     inc.style.display = 'none';
   }
-
-})
+});
 inc.addEventListener('change', () => {
   audioPlayer.volume = inc.value / 100;
   let val = inc.value / 100;
-  console.log(val);
   if (val == 0) {
     change.classList.remove('fa-volume-low');
-    change.classList.remove('fa-volume-high')
+    change.classList.remove('fa-volume-high');
     change.classList.add('fa-volume-xmark');
-  }
-  else if (val > 0 && val <= 0.50) {
-    change.classList.remove('fa-volume-high')
+  } else if (val > 0 && val <= 0.50) {
+    change.classList.remove('fa-volume-high');
     change.classList.remove('fa-volume-xmark');
     change.classList.add('fa-volume-low');
-  }
-  else if (val > 0.51 && val <= 1) {
+  } else if (val > 0.51 && val <= 1) {
     change.classList.remove('fa-volume-off');
     change.classList.remove('fa-volume-xmark');
-    change.classList.add('fa-volume-high')
+    change.classList.add('fa-volume-high');
   }
 });
 
-let pic=document.querySelector("#small");
-
-
+// Change profile picture functionality
+let pic = document.querySelector("#small");
 pic.addEventListener("click", async () => {
   try {
     const [fileHandle] = await window.showOpenFilePicker({
