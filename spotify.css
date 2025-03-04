@@ -442,7 +442,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .Mute {
-    color:white;
+    color: white;
     font-size: 25px;
     margin-left: 20px;
     cursor: pointer;
@@ -494,20 +494,24 @@ input[type="range"]::-webkit-slider-thumb {
     text-align: center;
     font-size: 30px;
 }
-.item{
+
+.item {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 #decrease {
     font-size: 25px;
     cursor: pointer;
     margin-right: 20px;
-    color:white;
+    color: white;
 }
-.note{
+
+.note {
     display: none;
 }
+
 @media only screen and (max-width : 500px) {
     * {
         margin: 0;
@@ -521,6 +525,11 @@ input[type="range"]::-webkit-slider-thumb {
 
     html {
         background-color: #0f2133;
+        width: 99%;
+    }
+
+    .container {
+        width: 96%;
     }
 
     .note {
@@ -532,7 +541,7 @@ input[type="range"]::-webkit-slider-thumb {
     .menuContainer {
         display: block;
         width: 100%;
-        margin-left: -24%;
+        margin-left: -25.5%;
         padding: 0;
 
     }
@@ -569,7 +578,7 @@ input[type="range"]::-webkit-slider-thumb {
         height: 20%;
         border-radius: 19px;
         background: #19192b;
-        padding-bottom: 15vw;
+        padding-bottom: 18vw;
     }
 
     .playCards {
@@ -581,7 +590,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     nav {
-        width: 99%;
+        width: 96%;
         height: 6vh;
         /* background: linear-gradient(45deg, #13134b, #087878, #050564); */
         background: #16162e
@@ -626,7 +635,7 @@ input[type="range"]::-webkit-slider-thumb {
         margin-top: 2px;
         position: fixed;
         height: 85vh;
-        width: 100%;
+        width: 99%;
     }
 
     .spotifyLogo {
@@ -671,7 +680,7 @@ input[type="range"]::-webkit-slider-thumb {
     .playIcon i {
         margin-left: 8%;
     }
-   
+
     .SongList {
         width: 94%;
         display: flex;
@@ -725,12 +734,14 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
         margin-top: 10px;
     }
-    #decrease{
+
+    #decrease {
         color: #464343;
     }
-   .Mute{
-    color: #464343;
-   }
+
+    .Mute {
+        color: #464343;
+    }
 }
 
 #menuToggle {
@@ -742,6 +753,7 @@ input[type="range"]::-webkit-slider-thumb {
     top: -13%;
     left: 169px;
     height: 87%;
+    width: 101%;
 }
 
 .container {
@@ -846,7 +858,7 @@ nav {
 }
 
 .menuList {
-    height: 84.5%;
+    height: 83.5%;
     overflow-y: scroll;
     background-color: #1f1c2c;
 }
@@ -874,4 +886,16 @@ nav {
 
 .out {
     transform: scale(0.9);
+}
+
+.Find{
+    height: 45px;
+    width: 180px;
+    font-size: 21px;
+    text-align: center;
+    background-color: #102841;
+    outline: none;
+    color: white;
+    border-radius: 12px;
+    border: none;
 }
